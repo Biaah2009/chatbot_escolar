@@ -7,10 +7,20 @@ app = Flask(__name__)
 def index():
     resposta = ""
     mensagem_usuario = ""
+
     if request.method == 'POST':
-        mensagem_usuario = request.form.get("mensagem")
-        resposta = chatbot(mensagem_usuario)
-    return render_template('index.html', resposta=resposta, mensagem_usuario=mensagem_usuario)
+        mensagem_usuario = request.form.get("mensagem", "").strip()
+
+        if mensagem_usuario:
+            resposta = chatbot(mensagem_usuario)
+        else:
+            resposta = "Por favor, digite uma pergunta."
+
+    return render_template(
+        'index.html',
+        resposta=resposta,
+        mensagem_usuario=mensagem_usuario
+    )
 
 if __name__ == "__main__":
-    app.run(debug =True)
+    app.run(debug=True)

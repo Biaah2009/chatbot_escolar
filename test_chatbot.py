@@ -2,24 +2,24 @@ from ia import chatbot
 
 def test_saudacao():
     resposta = chatbot("oi")
-    assert resposta == "ola! Bem-vindo a nossa loja "
+    assert resposta == "Olá! Bem-vindo à escola. Como posso ajudar?"
 
-def test_produtos():
-    resposta = chatbot("quais produtos voces tem")
-    assert resposta == "Temos camisetas, tenis e acessorios!"
+def test_matricula():
+    resposta = chatbot("como faço a matrícula")
+    assert resposta == "As matrículas podem ser feitas na secretaria. É necessário RG, CPF e comprovante de residência."
 
-def test_preco():
-    resposta = chatbot("qual o preço da camiseta")
-    assert resposta == "Camisetas a partir de R$50 e tenis a partir de R$120."
+def test_notas():
+    resposta = chatbot("como ver minhas notas")
+    assert resposta == "Você pode consultar suas notas pelo portal do aluno ou na secretaria."
 
 def test_horario():
-    resposta = chatbot("que horas abre")
-    assert resposta == "Funcionamos das 08h as 18h."
+    resposta = chatbot("qual o horário das aulas")
+    assert resposta == "As aulas acontecem nos turnos manhã, tarde e noite, conforme a turma."
 
-def test_despedida():
-    resposta = chatbot("tchau")
-    assert resposta == "Obrigado pela visita!"
+def test_contato():
+    resposta = chatbot("como entro em contato")
+    assert resposta == "Você pode entrar em contato pelo telefone ou diretamente na secretaria da escola."
 
 def test_frase_desconhecida():
     resposta = chatbot("teste de erro")
-    assert resposta == "Desculpe, nao entendi."
+    assert resposta == "Desculpe, não entendi sua dúvida."
