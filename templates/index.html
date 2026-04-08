@@ -45,14 +45,16 @@
     <h2 class="mb-4">Chatbot da Escola</h2>
 
     <div id="chat-box" class="d-flex flex-column">
-        {% if mensagem_usuario %}
-            <div class="mensagem usuario ms-auto">{{ mensagem_usuario }}</div>
-            <div class="mensagem bot me-auto">{{ resposta }}</div>
-        {% else %}
-            <div class="mensagem bot me-auto">
-                Olá! Eu sou o chatbot da escola. Como posso te ajudar?
-            </div>
-        {% endif %}
+        {% if mensagem_usuario or resposta %}
+    {% if mensagem_usuario %}
+        <div class="mensagem usuario ms-auto">{{ mensagem_usuario }}</div>
+    {% endif %}
+    <div class="mensagem bot me-auto">{{ resposta }}</div>
+{% else %}
+    <div class="mensagem bot me-auto">
+        Olá! Eu sou o chatbot da escola. Como posso te ajudar?
+    </div>
+{% endif %}
     </div>
 
     <form method="post" class="d-flex justify-content-center">

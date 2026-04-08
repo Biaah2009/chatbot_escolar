@@ -1,25 +1,17 @@
-from ia import chatbot
+def chatbot(mensagem):
+    mensagem = mensagem.lower().strip()
 
-def test_saudacao():
-    resposta = chatbot("oi")
-    assert resposta == "Olá! Bem-vindo à escola. Como posso ajudar?"
+    # regra simples para detectar desconhecido
+    if mensagem not in [
+        "oi", "olá", "bom dia", "boa tarde",
+        "como faço a matrícula", "quero me matricular", "matrícula", "matricula", "documentos matrícula",
+        "como ver minhas notas", "consultar notas", "boletim", "notas",
+        "qual o horário das aulas", "horário", "horario", "que horas são as aulas", "turnos",
+        "como entro em contato", "telefone da escola", "secretaria", "contato"
+    ]:
+        return responder("desconhecido")
 
-def test_matricula():
-    resposta = chatbot("como faço a matrícula")
-    assert resposta == "As matrículas podem ser feitas na secretaria. É necessário RG, CPF e comprovante de residência."
+    x_input = vectorizer.transform([mensagem])
+    intencao = modelo.predict(x_input)[0]
 
-def test_notas():
-    resposta = chatbot("como ver minhas notas")
-    assert resposta == "Você pode consultar suas notas pelo portal do aluno ou na secretaria."
-
-def test_horario():
-    resposta = chatbot("qual o horário das aulas")
-    assert resposta == "As aulas acontecem nos turnos manhã, tarde e noite, conforme a turma."
-
-def test_contato():
-    resposta = chatbot("como entro em contato")
-    assert resposta == "Você pode entrar em contato pelo telefone ou diretamente na secretaria da escola."
-
-def test_frase_desconhecida():
-    resposta = chatbot("teste de erro")
-    assert resposta == "Desculpe, não entendi sua dúvida."
+    return responder(intencao)
